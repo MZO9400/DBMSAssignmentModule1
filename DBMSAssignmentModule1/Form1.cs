@@ -28,10 +28,7 @@ namespace DBMSAssignmentModule1 {
                     SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
                     DataTable dt = new DataTable();
                     _ = sda.Fill(dt);
-                    BindingSource bs = new BindingSource();
-                    bs.DataSource = dt;
                     this.dataGridView1.DataSource = dt;
-                    bs.ResetBindings(true);
                 }
 
             }
