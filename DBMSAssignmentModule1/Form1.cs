@@ -46,7 +46,7 @@ namespace DBMSAssignmentModule1 {
         private void label1_Click(Object sender, EventArgs e) {
         }
         private Boolean m_checkPassword() {
-            return this.textBox1.Text == "61qz+AW<b]<sSCC9";
+            return this.textBox1.Text != "61qz+AW<b]<sSCC9";
         }
 
         private void RUN_Click(Object sender, EventArgs e) {
