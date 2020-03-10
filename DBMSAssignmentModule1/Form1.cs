@@ -10,10 +10,6 @@ namespace DBMSAssignmentModule1 {
             this.m_fillCombo();
 		}
 
-		private void dataGridView1_CellContentClick(Object sender, DataGridViewCellEventArgs e) {
-
-		}
-
         private void comboBox1_SelectedIndexChanged(Object sender, EventArgs e) {
             try {
                 using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
@@ -75,28 +71,17 @@ namespace DBMSAssignmentModule1 {
                 }
             }
         }
-        private Int32 m_countEntries(String tableName) {
-            Int32 count = 0;
-            using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
-                connection.Open();
-                SqlCommand countCurrentEntries = new SqlCommand("USE DBMS; SELECT COUNT(*) 'count' FROM " + tableName, connection);
-                count = (Int32) countCurrentEntries.ExecuteScalar();
-            }
-            return count;
-        } 
 
         private void button1_Click(Object sender, EventArgs e) {
-            String CITY = this.textBox2.Text.Substring(0, this.textBox2.Text.Length > 20 ? 20 : this.textBox2.Text.Length);
-            String STREET = this.textBox3.Text.Substring(0, this.textBox3.Text.Length > 10 ? 10 : this.textBox3.Text.Length);
-            Int32 HOUSE = Int32.Parse(this.maskedTextBox1.Text);
-            String LANDLINE = this.textBox4.Text.Substring(0, this.textBox4.Text.Length > 15 ? 15 : this.textBox4.Text.Length);
-            Int32 ADDRESS_ID = this.m_countEntries("ADDRESS");
             using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
                 connection.Open();
-                String insertionCommand = "USE DBMS; INSERT INTO [ADDRESS] ([CITY] ,[STREET] ,[HOUSE] ,[LANDLINE_NUMBER] ,[ADDRESS_ID]) VALUES ('" + 
-                                            CITY +"','"+STREET+"',"+HOUSE+",'"+LANDLINE+"',"+ADDRESS_ID+");";
-                SqlCommand Insert = new SqlCommand(insertionCommand, connection);
-                _ = MessageBox.Show(Insert.ExecuteNonQuery() + " rows effected" , "Result");
+                String cmdstr = "Use DBMS; SELECT * FROM [dbo].[" + this.comboBox1.Text + "]";
+                SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
+                SqlCommandBuilder cmd = new SqlCommandBuilder(sda);
+                sda.InsertCommand = cmd.GetInsertCommand();
+                sda.DeleteCommand = cmd.GetDeleteCommand();
+                sda.UpdateCommand = cmd.GetUpdateCommand();
+                _ = sda.Update((DataTable) this.dataGridView1.DataSource);
             }
         }
     }

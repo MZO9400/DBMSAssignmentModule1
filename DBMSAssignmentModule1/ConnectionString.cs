@@ -8,7 +8,7 @@ namespace DBMS {
 			return new SqlConnectionStringBuilder {
 				DataSource = "HAMZAST440\\SQLSERVER",
 				IntegratedSecurity = true,
-				InitialCatalog = "master"
+				InitialCatalog = "DBMS"
 			}.ConnectionString;
 		}
 	}
