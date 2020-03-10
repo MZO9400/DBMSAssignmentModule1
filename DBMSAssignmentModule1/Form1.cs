@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -54,6 +48,29 @@ namespace DBMSAssignmentModule1 {
         }
 
         private void label1_Click(Object sender, EventArgs e) {
+        }
+
+        private void RUN_Click(Object sender, EventArgs e) {
+            if (this.richTextBox1.Text.Length <= 0) {
+                _ = MessageBox.Show("QUERY IS EMPTY", "ERROR!");
+                return;
+            }
+            if (this.textBox1.Text != "61qz+AW<b]<sSCC9") {
+                _ = MessageBox.Show("INVALID PASSWORD", "ERROR!");
+                return;
+            }
+            using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("Use DBMS; " + this.richTextBox1.Text, connection);
+                DataTable dt = new DataTable();
+                try {
+                    _ = adapter.Fill(dt);
+                    this.dataGridView2.DataSource = dt;
+                }
+                catch (Exception ex) {
+                    _ = MessageBox.Show(ex.Message, "MALFORMED QUERY");
+                }
+            }
         }
     }
 }
