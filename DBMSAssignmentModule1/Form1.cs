@@ -14,7 +14,7 @@ namespace DBMSAssignmentModule1 {
             try {
                 using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
                     connection.Open();
-                    String cmdstr = "Use DBMS; SELECT * FROM " + this.comboBox1.Text;
+                    String cmdstr = "SELECT * FROM " + this.comboBox1.Text;
                     SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
                     DataTable dt = new DataTable();
                     _ = sda.Fill(dt);
@@ -28,7 +28,7 @@ namespace DBMSAssignmentModule1 {
         }
 
         void m_fillCombo() {
-            String cmdstr = "Use DBMS; SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT IN ('SYSDIAGRAMS')";
+            String cmdstr = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT IN ('SYSDIAGRAMS')";
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmdstr, DBMS.ConnectionString.getConnectionString());
             try {
@@ -60,7 +60,7 @@ namespace DBMSAssignmentModule1 {
             }
             using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("Use DBMS; " + this.richTextBox1.Text, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(this.richTextBox1.Text, connection);
                 DataTable dt = new DataTable();
                 try {
                     _ = adapter.Fill(dt);
@@ -75,7 +75,7 @@ namespace DBMSAssignmentModule1 {
         private void button1_Click(Object sender, EventArgs e) {
             using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
                 connection.Open();
-                String cmdstr = "Use DBMS; SELECT * FROM [dbo].[" + this.comboBox1.Text + "]";
+                String cmdstr = "SELECT * FROM [dbo].[" + this.comboBox1.Text + "]";
                 SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
                 SqlCommandBuilder cmd = new SqlCommandBuilder(sda);
                 sda.InsertCommand = cmd.GetInsertCommand();
