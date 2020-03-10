@@ -81,7 +81,7 @@
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage1.Size = new System.Drawing.Size(1121, 399);
 			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Tables";
+			this.tabPage1.Text = "TABLES";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
 			// dataGridView1
@@ -125,7 +125,7 @@
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage2.Size = new System.Drawing.Size(1121, 399);
 			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Run query";
+			this.tabPage2.Text = "MANUAL QUERIES";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
 			// richTextBox1
