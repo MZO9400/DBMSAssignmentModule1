@@ -101,8 +101,10 @@
 			this.dataGridView1.AllowUserToOrderColumns = true;
 			this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView1.Location = new System.Drawing.Point(12, 37);
 			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
 			this.dataGridView1.Size = new System.Drawing.Size(1100, 356);
 			this.dataGridView1.TabIndex = 2;
 			// 
@@ -158,10 +160,13 @@
 			// 
 			// dataGridView2
 			// 
+			this.dataGridView2.AllowUserToOrderColumns = true;
 			this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Window;
 			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView2.Location = new System.Drawing.Point(9, 129);
 			this.dataGridView2.Name = "dataGridView2";
+			this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
 			this.dataGridView2.Size = new System.Drawing.Size(1103, 264);
 			this.dataGridView2.TabIndex = 2;
 			// 
