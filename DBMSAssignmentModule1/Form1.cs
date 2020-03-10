@@ -49,13 +49,16 @@ namespace DBMSAssignmentModule1 {
 
         private void label1_Click(Object sender, EventArgs e) {
         }
+        private Boolean m_checkPassword() {
+            return this.textBox1.Text == "61qz+AW<b]<sSCC9";
+        }
 
         private void RUN_Click(Object sender, EventArgs e) {
             if (this.richTextBox1.Text.Length <= 0) {
                 _ = MessageBox.Show("QUERY IS EMPTY", "ERROR!");
                 return;
             }
-            if (this.textBox1.Text != "61qz+AW<b]<sSCC9") {
+            if (this.m_checkPassword()) {
                 _ = MessageBox.Show("INVALID PASSWORD", "ERROR!");
                 return;
             }
@@ -70,6 +73,30 @@ namespace DBMSAssignmentModule1 {
                 catch (Exception ex) {
                     _ = MessageBox.Show(ex.Message, "MALFORMED QUERY");
                 }
+            }
+        }
+        private Int32 m_countEntries(String tableName) {
+            Int32 count = 0;
+            using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+                connection.Open();
+                SqlCommand countCurrentEntries = new SqlCommand("USE DBMS; SELECT COUNT(*) 'count' FROM " + tableName, connection);
+                count = (Int32) countCurrentEntries.ExecuteScalar();
+            }
+            return count;
+        } 
+
+        private void button1_Click(Object sender, EventArgs e) {
+            String CITY = this.textBox2.Text.Substring(0, this.textBox2.Text.Length > 20 ? 20 : this.textBox2.Text.Length);
+            String STREET = this.textBox3.Text.Substring(0, this.textBox3.Text.Length > 10 ? 10 : this.textBox3.Text.Length);
+            Int32 HOUSE = Int32.Parse(this.maskedTextBox1.Text);
+            String LANDLINE = this.textBox4.Text.Substring(0, this.textBox4.Text.Length > 15 ? 15 : this.textBox4.Text.Length);
+            Int32 ADDRESS_ID = this.m_countEntries("ADDRESS");
+            using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+                connection.Open();
+                String insertionCommand = "USE DBMS; INSERT INTO [ADDRESS] ([CITY] ,[STREET] ,[HOUSE] ,[LANDLINE_NUMBER] ,[ADDRESS_ID]) VALUES ('" + 
+                                            CITY +"','"+STREET+"',"+HOUSE+",'"+LANDLINE+"',"+ADDRESS_ID+");";
+                SqlCommand Insert = new SqlCommand(insertionCommand, connection);
+                _ = MessageBox.Show(Insert.ExecuteNonQuery() + " rows effected" , "Result");
             }
         }
     }
