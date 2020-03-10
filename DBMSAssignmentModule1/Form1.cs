@@ -41,7 +41,7 @@ namespace DBMSAssignmentModule1 {
         }
 
         void m_fillCombo() {
-            String cmdstr = "Use DBMS; SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES";
+            String cmdstr = "Use DBMS; SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT IN ('SYSDIAGRAMS')";
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmdstr, DBMS.ConnectionString.getConnectionString());
             try {
