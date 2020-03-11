@@ -84,5 +84,9 @@ namespace DBMSAssignmentModule1 {
                 _ = sda.Update((DataTable) this.dataGridView1.DataSource);
             }
         }
+
+        private void dataGridView1_CellContentClick(Object sender, DataGridViewCellEventArgs e) {
+
+        }
     }
 }
