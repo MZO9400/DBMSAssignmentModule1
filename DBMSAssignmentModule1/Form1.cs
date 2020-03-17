@@ -8,7 +8,8 @@ namespace DBMSAssignmentModule1 {
 		public Form1() {
             this.InitializeComponent();
             this.m_fillCombo();
-		}
+            this.richTextBox1.Text = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT IN ('SYSDIAGRAMS')";
+        }
 
         private void comboBox1_SelectedIndexChanged(Object sender, EventArgs e) {
             try {
@@ -46,7 +47,7 @@ namespace DBMSAssignmentModule1 {
         private void label1_Click(Object sender, EventArgs e) {
         }
         private Boolean m_checkPassword() {
-            return this.textBox1.Text != "61qz+AW<b]<sSCC9";
+            return this.textBox1.Text != DBMS.ConnectionString.getPassword();
         }
 
         private void RUN_Click(Object sender, EventArgs e) {
@@ -74,14 +75,19 @@ namespace DBMSAssignmentModule1 {
 
         private void button1_Click(Object sender, EventArgs e) {
             using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
-                connection.Open();
-                String cmdstr = "SELECT * FROM [dbo].[" + this.comboBox1.Text + "]";
-                SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
-                SqlCommandBuilder cmd = new SqlCommandBuilder(sda);
-                sda.InsertCommand = cmd.GetInsertCommand();
-                sda.DeleteCommand = cmd.GetDeleteCommand();
-                sda.UpdateCommand = cmd.GetUpdateCommand();
-                _ = sda.Update((DataTable) this.dataGridView1.DataSource);
+                try {
+                    connection.Open();
+                    String cmdstr = "SELECT * FROM [dbo].[" + this.comboBox1.Text + "]";
+                    SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
+                    SqlCommandBuilder cmd = new SqlCommandBuilder(sda);
+                    sda.InsertCommand = cmd.GetInsertCommand();
+                    sda.DeleteCommand = cmd.GetDeleteCommand();
+                    sda.UpdateCommand = cmd.GetUpdateCommand();
+                    _ = sda.Update((DataTable) this.dataGridView1.DataSource);
+                }
+                catch (Exception err) {
+                    _ = MessageBox.Show(err.ToString(), "ERROR");
+                }
             }
         }
 

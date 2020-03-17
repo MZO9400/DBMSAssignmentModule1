@@ -11,5 +11,8 @@ namespace DBMS {
 				InitialCatalog = "DBMS"
 			}.ConnectionString;
 		}
+		public static String getPassword() {
+			return "61qz+AW<b]<sSCC9";
+		}
 	}
 }
