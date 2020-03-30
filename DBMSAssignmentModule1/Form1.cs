@@ -13,7 +13,7 @@ namespace DBMSAssignmentModule1 {
 
         private void comboBox1_SelectedIndexChanged(Object sender, EventArgs e) {
             try {
-                using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+                using (SqlConnection connection = new SqlConnection(DBMS.Proprietary.getConnectionString())) {
                     connection.Open();
                     String cmdstr = "SELECT * FROM " + this.comboBox1.Text;
                     SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
@@ -31,7 +31,7 @@ namespace DBMSAssignmentModule1 {
         void m_fillCombo() {
             String cmdstr = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT IN ('SYSDIAGRAMS')";
             DataTable dt = new DataTable();
-            SqlDataAdapter sda = new SqlDataAdapter(cmdstr, DBMS.ConnectionString.getConnectionString());
+            SqlDataAdapter sda = new SqlDataAdapter(cmdstr, DBMS.Proprietary.getConnectionString());
             try {
                 _ = sda.Fill(dt);
                 foreach (DataRow row in dt.Rows) {
@@ -47,7 +47,7 @@ namespace DBMSAssignmentModule1 {
         private void label1_Click(Object sender, EventArgs e) {
         }
         private Boolean m_checkPassword() {
-            return this.textBox1.Text != DBMS.ConnectionString.getPassword();
+            return this.textBox1.Text != DBMS.Proprietary.getPassword();
         }
 
         private void RUN_Click(Object sender, EventArgs e) {
@@ -59,7 +59,7 @@ namespace DBMSAssignmentModule1 {
                 _ = MessageBox.Show("INVALID PASSWORD", "ERROR!");
                 return;
             }
-            using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+            using (SqlConnection connection = new SqlConnection(DBMS.Proprietary.getConnectionString())) {
                 connection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(this.richTextBox1.Text, connection);
                 DataTable dt = new DataTable();
@@ -74,7 +74,7 @@ namespace DBMSAssignmentModule1 {
         }
 
         private void button1_Click(Object sender, EventArgs e) {
-            using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+            using (SqlConnection connection = new SqlConnection(DBMS.Proprietary.getConnectionString())) {
                 try {
                     connection.Open();
                     String cmdstr = "SELECT * FROM [dbo].[" + this.comboBox1.Text + "]";
@@ -97,9 +97,9 @@ namespace DBMSAssignmentModule1 {
 
         private void comboBox2_SelectedIndexChanged(Object sender, EventArgs e) {
                 try {
-                    using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+                    using (SqlConnection connection = new SqlConnection(DBMS.Proprietary.getConnectionString())) {
                         connection.Open();
-                        String businessQuestion = DBMS.ConnectionString.getQestions()[(Int32.Parse(this.comboBox2.Text) - 1)];
+                        String businessQuestion = DBMS.Proprietary.getQestions()[(Int32.Parse(this.comboBox2.Text) - 1)];
                         SqlDataAdapter sda = new SqlDataAdapter(businessQuestion, connection);
                         DataTable dt = new DataTable();
                         _ = sda.Fill(dt);

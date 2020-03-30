@@ -3,7 +3,7 @@ using System.Text;
 using System.Data.SqlClient;
 
 namespace DBMS {
-	public class ConnectionString {
+	public class Proprietary {
 		public static String getConnectionString() {
 			return new SqlConnectionStringBuilder {
 				DataSource = "HAMZAST440\\SQLSERVER",
