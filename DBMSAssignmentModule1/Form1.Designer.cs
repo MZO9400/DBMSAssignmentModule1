@@ -38,6 +38,10 @@
 			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.RUN = new System.Windows.Forms.Button();
 			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.dataGridView3 = new System.Windows.Forms.DataGridView();
+			this.label3 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dBMSDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dBMSDataSetBindingSource)).BeginInit();
 			this.tabControl1.SuspendLayout();
@@ -45,6 +49,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tabPage2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			this.tabPage3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dBMSDataSet
@@ -64,6 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.tabControl1.HotTrack = true;
 			this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -201,6 +208,63 @@
 			this.richTextBox1.TabIndex = 0;
 			this.richTextBox1.Text = "";
 			// 
+			// tabPage3
+			// 
+			this.tabPage3.Controls.Add(this.label3);
+			this.tabPage3.Controls.Add(this.dataGridView3);
+			this.tabPage3.Controls.Add(this.comboBox2);
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(1121, 399);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "BUSINESS QUESTIONS";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// comboBox2
+			// 
+			this.comboBox2.FormattingEnabled = true;
+			this.comboBox2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+			this.comboBox2.Location = new System.Drawing.Point(111, 6);
+			this.comboBox2.Name = "comboBox2";
+			this.comboBox2.Size = new System.Drawing.Size(47, 21);
+			this.comboBox2.TabIndex = 0;
+			this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+			// 
+			// dataGridView3
+			// 
+			this.dataGridView3.AllowUserToOrderColumns = true;
+			this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
+			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+			this.dataGridView3.Location = new System.Drawing.Point(8, 33);
+			this.dataGridView3.Name = "dataGridView3";
+			this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+			this.dataGridView3.Size = new System.Drawing.Size(1104, 360);
+			this.dataGridView3.TabIndex = 3;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(8, 9);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(97, 13);
+			this.label3.TabIndex = 4;
+			this.label3.Text = "Business Question:";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,6 +285,9 @@
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			this.tabPage3.ResumeLayout(false);
+			this.tabPage3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -240,6 +307,10 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TabPage tabPage3;
+		private System.Windows.Forms.ComboBox comboBox2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.DataGridView dataGridView3;
 	}
 }
 

@@ -94,5 +94,23 @@ namespace DBMSAssignmentModule1 {
         private void dataGridView1_CellContentClick(Object sender, DataGridViewCellEventArgs e) {
 
         }
+
+        private void comboBox2_SelectedIndexChanged(Object sender, EventArgs e) {
+                try {
+                    using (SqlConnection connection = new SqlConnection(DBMS.ConnectionString.getConnectionString())) {
+                        connection.Open();
+                        String businessQuestion = DBMS.ConnectionString.getQestions()[(Int32.Parse(this.comboBox2.Text) - 1)];
+                        SqlDataAdapter sda = new SqlDataAdapter(businessQuestion, connection);
+                        DataTable dt = new DataTable();
+                        _ = sda.Fill(dt);
+                        this.dataGridView3.DataSource = dt;
+                    }
+
+                }
+                catch (Exception ex) {
+                    _ = MessageBox.Show(ex.Message);
+                }
+        }
+
     }
 }
