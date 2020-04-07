@@ -1,5 +1,5 @@
 ﻿namespace DBMSAssignmentModule1 {
-	partial class Form1 {
+	partial class NescafeBasement {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -280,7 +280,7 @@
 			this.comboBox2.TabIndex = 0;
 			this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
 			// 
-			// Form1
+			// NescafeBasement
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -289,7 +289,7 @@
 			this.ClientSize = new System.Drawing.Size(1316, 519);
 			this.Controls.Add(this.tabControl1);
 			this.MinimumSize = new System.Drawing.Size(744, 548);
-			this.Name = "Form1";
+			this.Name = "NescafeBasement";
 			this.Text = "Main";
 			((System.ComponentModel.ISupportInitialize) (this.dBMSDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize) (this.dBMSDataSetBindingSource)).EndInit();
