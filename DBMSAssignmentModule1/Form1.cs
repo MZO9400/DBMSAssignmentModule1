@@ -18,13 +18,13 @@ namespace DBMSAssignmentModule1 {
                     String cmdstr = "SELECT * FROM " + this.comboBox1.Text;
                     SqlDataAdapter sda = new SqlDataAdapter(cmdstr, connection);
                     DataTable dt = new DataTable();
-                    _ = sda.Fill(dt);
+                    sda.Fill(dt);
                     this.dataGridView1.DataSource = dt;
                 }
 
             }
             catch (Exception ex) {
-                _ = MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -33,14 +33,14 @@ namespace DBMSAssignmentModule1 {
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmdstr, DBMS.Proprietary.getConnectionString());
             try {
-                _ = sda.Fill(dt);
+                sda.Fill(dt);
                 foreach (DataRow row in dt.Rows) {
 
-                    _ = this.comboBox1.Items.Add(row["TABLE_NAME"]);
+                    this.comboBox1.Items.Add(row["TABLE_NAME"]);
                 }
             }
             catch (Exception ex) {
-                _ = MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -52,11 +52,11 @@ namespace DBMSAssignmentModule1 {
 
         private void RUN_Click(Object sender, EventArgs e) {
             if (this.richTextBox1.Text.Length <= 0) {
-                _ = MessageBox.Show("QUERY IS EMPTY", "ERROR!");
+                MessageBox.Show("QUERY IS EMPTY", "ERROR!");
                 return;
             }
             if (this.m_checkPassword()) {
-                _ = MessageBox.Show("INVALID PASSWORD", "ERROR!");
+                MessageBox.Show("INVALID PASSWORD", "ERROR!");
                 return;
             }
             using (SqlConnection connection = new SqlConnection(DBMS.Proprietary.getConnectionString())) {
@@ -64,11 +64,11 @@ namespace DBMSAssignmentModule1 {
                 SqlDataAdapter adapter = new SqlDataAdapter(this.richTextBox1.Text, connection);
                 DataTable dt = new DataTable();
                 try {
-                    _ = adapter.Fill(dt);
+                    adapter.Fill(dt);
                     this.dataGridView2.DataSource = dt;
                 }
                 catch (Exception ex) {
-                    _ = MessageBox.Show(ex.Message, "MALFORMED QUERY");
+                    MessageBox.Show(ex.Message, "MALFORMED QUERY");
                 }
             }
         }
@@ -83,10 +83,10 @@ namespace DBMSAssignmentModule1 {
                     sda.InsertCommand = cmd.GetInsertCommand();
                     sda.DeleteCommand = cmd.GetDeleteCommand();
                     sda.UpdateCommand = cmd.GetUpdateCommand();
-                    _ = sda.Update((DataTable) this.dataGridView1.DataSource);
+                    sda.Update((DataTable) this.dataGridView1.DataSource);
                 }
                 catch (Exception err) {
-                    _ = MessageBox.Show(err.ToString(), "ERROR");
+                    MessageBox.Show(err.ToString(), "ERROR");
                 }
             }
         }
@@ -102,13 +102,13 @@ namespace DBMSAssignmentModule1 {
                         String businessQuestion = DBMS.Proprietary.getQestions()[(Int32.Parse(this.comboBox2.Text) - 1)];
                         SqlDataAdapter sda = new SqlDataAdapter(businessQuestion, connection);
                         DataTable dt = new DataTable();
-                        _ = sda.Fill(dt);
+                        sda.Fill(dt);
                         this.dataGridView3.DataSource = dt;
                     }
 
                 }
                 catch (Exception ex) {
-                    _ = MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
         }
 
